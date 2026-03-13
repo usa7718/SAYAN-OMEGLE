@@ -32,14 +32,14 @@
         }
 
         body {
-            background: var(--background);
-            color: var(--foreground);
-            font-family: var(--font-sans);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-        }
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
 
         h1, h2, h3 {
             font-family: var(--font-display);
@@ -388,6 +388,18 @@
         .scrollbar-hide::-webkit-scrollbar {
             display: none;
         }
+        .camera-off {
+    position: absolute;
+    inset: 0;
+    background: black;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    z-index: 5;
+}
     </style>
 </head>
 <body>
@@ -398,6 +410,7 @@
             <h1 class="header-title">RandomChat</h1>
         </div>
         <div class="header-right">
+            <button onclick="toggleCamera()" class="btn btn-primary" id="cameraBtn">Pause Cam</button>
             <button onclick="skipPartner()" class="btn btn-primary">Skip</button>
             <button onclick="goHome()" class="btn btn-danger">Stop</button>
         </div>
@@ -408,6 +421,7 @@
         <div class="video-section">
             <div class="video-main">
                 <video id="remoteVideo" autoplay playsinline class="remote-video"></video>
+                <div class="camera-off" id="cameraOffLabel">📷 Camera Off</div>
                 <div class="video-label" id="partnerLabel">Stranger</div>
                 
                 <!-- Local Video -->
@@ -565,6 +579,28 @@
     setTimeout(() => {
         messagesDiv.scrollTop = messagesDiv.scrollHeight;
     }, 50);
+}
+
+let cameraEnabled = true;
+
+function toggleCamera() {
+
+    if (!localStream) return;
+
+    const videoTrack = localStream.getVideoTracks()[0];
+    const btn = document.getElementById("cameraBtn");
+    const overlay = document.getElementById("cameraOffLabel");
+
+    cameraEnabled = !cameraEnabled;
+    videoTrack.enabled = cameraEnabled;
+
+    if (cameraEnabled) {
+        btn.textContent = "Pause Cam";
+        overlay.style.display = "none";
+    } else {
+        btn.textContent = "Play Cam";
+        overlay.style.display = "flex";
+    }
 }
 
         // =============== SKIP / DISCONNECT ===============
