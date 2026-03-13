@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finding Stranger - RandomChat</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --background: rgb(10, 10, 20);
+            --foreground: rgb(250, 250, 250);
+            --card: rgb(15, 15, 30);
+            --primary: rgb(139, 92, 246);
+            --white-5: rgba(255, 255, 255, 0.05);
+            --white-10: rgba(255, 255, 255, 0.10);
+            --white-20: rgba(255, 255, 255, 0.20);
+            --white-30: rgba(255, 255, 255, 0.30);
+            --white-50: rgba(255, 255, 255, 0.50);
+            --white-70: rgba(255, 255, 255, 0.70);
+            --font-sans: 'DM Sans', sans-serif;
+            --font-display: 'Outfit', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a3e 0%, var(--background) 50%, #2a1a4e 100%);
+            color: var(--foreground);
+            font-family: var(--font-sans);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        h2 {
+            font-family: var(--font-display);
+            font-weight: bold;
+        }
+
+        .bg-gradient-1 {
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: rgba(139, 92, 246, 0.1);
+            border-radius: 50%;
+            filter: blur(120px);
+            top: 0;
+            left: 25%;
+            pointer-events: none;
+        }
+
+        .bg-gradient-2 {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            background: rgba(59, 130, 246, 0.05);
+            border-radius: 50%;
+            filter: blur(150px);
+            bottom: 0;
+            right: 25%;
+            pointer-events: none;
+        }
+
+        .screen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 2rem;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .panel {
+            background: rgba(15, 15, 30, 0.6);
+            backdrop-filter: blur(40px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 2rem;
+            padding: 2rem 3rem;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .spinner-wrapper {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse-scale {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .spinner-circle {
+            width: 100%;
+            height: 100%;
+            border: 4px solid rgba(139, 92, 246, 0.3);
+            border-top: 4px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 3s linear infinite;
+        }
+
+        .spinner-icon {
+            position: absolute;
+            width: 32px;
+            height: 32px;
+            animation: pulse-scale 2s ease-in-out infinite;
+        }
+
+        .panel h2 {
+            font-size: 1.875rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .panel p {
+            color: var(--white-50);
+            margin-bottom: 2rem;
+            max-width: 300px;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .btn {
+            padding: 0.625rem 1.5rem;
+            border: 1px solid var(--white-10);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--white-70);
+            border-radius: 2rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: var(--font-sans);
+            font-size: 0.875rem;
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--white-50);
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="bg-gradient-1"></div>
+    <div class="bg-gradient-2"></div>
+
+    <!-- Main Content -->
+    <div class="screen">
+        <div class="panel">
+            <!-- Spinner -->
+            <div class="spinner-wrapper">
+                <div class="spinner-circle"></div>
+                <div class="spinner-icon">✨</div>
+            </div>
+
+            <!-- Content -->
+            <h2>Looking for someone...</h2>
+            <p>Connecting you to a random stranger worldwide.</p>
+
+            <!-- Cancel Button -->
+            <button class="btn" onclick="goHome()">Cancel</button>
+        </div>
+    </div>
+
+    <script>
+        function goHome() {
+            localStorage.clear();
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+body { background: #0f0f13; color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; overflow-x: hidden; }
+
+.glass-panel { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 15px; padding: 30px; text-align: center; box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); width: 90%; max-width: 400px; }
+.glass-panel h1 { margin-bottom: 10px; color: #00f3ff; text-shadow: 0 0 10px rgba(0, 243, 255, 0.5); }
+.glass-panel p { margin-bottom: 20px; color: #aaa; }
+
+input, select { width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.2); background: rgba(0, 0, 0, 0.5); color: #fff; outline: none; }
+button { width: 100%; padding: 12px; border-radius: 8px; border: none; background: #00f3ff; color: #000; font-weight: bold; cursor: pointer; transition: 0.3s; }
+button:hover { box-shadow: 0 0 15px #00f3ff; }
+
+#chat-screen { width: 100%; max-width: 1000px; padding: 20px; display: flex; flex-direction: column; gap: 20px; flex: 1; margin-bottom: 50px; }
+.video-container { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+.video-box { position: relative; width: 100%; max-width: 450px; background: #000; border-radius: 12px; overflow: hidden; border: 2px solid #333; }
+video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.label { position: absolute; bottom: 10px; left: 10px; background: rgba(0,0,0,0.6); padding: 5px 10px; border-radius: 5px; font-size: 14px; }
+
+.chat-container { flex: 1; display: flex; flex-direction: column; max-width: 100%; width: 100%; }
+#messages { flex: 1; background: rgba(0,0,0,0.3); border-radius: 8px; padding: 10px; overflow-y: auto; max-height: 200px; margin-bottom: 15px; text-align: left; }
+#messages p { margin: 5px 0; font-size: 14px; }
+.input-area { display: flex; gap: 10px; margin-bottom: 10px; }
+.danger-btn { background: #ff4757; color: white; }
+.danger-btn:hover { box-shadow: 0 0 15px #ff4757; }
+
+.glowing-text { color: #00f3ff; animation: pulse 1.5s infinite; font-weight: bold; }
+@keyframes pulse { 0% { opacity: 0.5; } 50% { opacity: 1; } 100% { opacity: 0.5; } }
+
+footer { position: fixed; bottom: 0; width: 100%; background: #09090b; text-align: center; padding: 15px; border-top: 1px solid #333; font-size: 14px; color: #888; }
