@@ -75,18 +75,21 @@
         }
 
         .header-logo {
-            width: 32px;
-            height: 32px;
-            background: var(--primary);
-            border-radius: 0.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
-            font-weight: bold;
-            color: white;
-            font-size: 0.8rem;
-        }
+    width: 32px;
+    height: 32px;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+}
+
+.header-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
         .header-title {
             font-size: 1.125rem;
@@ -101,22 +104,23 @@
         }
 
         nav {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            justify-content: flex-end;
-        }
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    justify-content: center;
+}
 
         nav a {
-            padding: 0.5rem 0.75rem;
-            border-radius: 0.5rem;
-            background: var(--white-5);
-            color: var(--white-80);
-            text-decoration: none;
-            font-size: 0.75rem;
-            transition: all 0.3s;
-            border: 1px solid transparent;
-        }
+    padding: 0.45rem 0.8rem;
+    border-radius: 0.5rem;
+    background: var(--white-5);
+    color: var(--white-80);
+    text-decoration: none;
+    font-size: 0.8rem;
+    transition: all 0.25s;
+    border: 1px solid transparent;
+    white-space: nowrap;
+}
 
         @media (min-width: 768px) {
             nav a {
@@ -222,6 +226,13 @@
             transform: rotate(-6deg);
             transition: transform 0.3s;
         }
+        
+        .icon-box img {
+    width: 70%;
+    height: 70%;
+    object-fit: contain;
+    border-radius: 0.5rem;
+}
 
         .icon-box:hover {
             transform: rotate(0);
@@ -422,7 +433,6 @@
     <header>
         <div class="header-container">
             <div class="header-left">
-                <div class="header-logo">🌐</div>
                 <h2 class="header-title">RandomChat</h2>
             </div>
             <nav>
@@ -441,8 +451,8 @@
             <div class="icon-wrapper">
                 <div class="icon-glow"></div>
                 <div class="icon-box">
-                    👤
-                </div>
+    <img src="./logo.jpg" alt="Logo">
+</div>
             </div>
 
             <!-- Content -->
